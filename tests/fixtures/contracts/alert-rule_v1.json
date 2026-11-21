@@ -1,0 +1,1 @@
+{"active":true,"conditions":{"below":["close","590"]},"created_at":"2026-11-20T21:00:00Z","instrument_id":"INS-SPY-ETF-XARC-USD","interval":"1d","max_staleness_seconds":120,"missed_policy":"report_missed","rule_id":"AR-1","sampling_seconds":60,"schema_version":"alert-rule/1","symbol":"SPY"}

@@ -1,0 +1,1 @@
+{"availability_rule":"bar_available_at","feature_id":"sma","formula_version":"sma/1","inputs":["close"],"lookback":200,"min_history":200,"missing_policy":"unavailable","params":{"period":200},"schema_version":"feature/1","units":"USD"}

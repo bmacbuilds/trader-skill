@@ -1,0 +1,1 @@
+{"conditions":{"all":[{"above":["close",{"sma":200}]},{"below":[{"rsi":2},10]}]},"criteria_id":"CRIT-1","interval":"1d","max_staleness_bars":1,"name":"pullback in uptrend","schema_version":"scan-criteria/1","universe":["SPY"]}

@@ -1,0 +1,59 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "traderos"
+version = "0.1.0.dev0"
+description = "TraderOS: a local AI trading research operating system. Research and hypothetical planning; it never places a live order (paper orders go only to an Alpaca paper account, after an explicit yes)."
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+# ADR-001: the core has no runtime dependencies. Every dependency added here needs a row in
+# legal/dependency-ledger.csv and a human license review (spec 03.5).
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "hypothesis>=6"]
+
+[project.scripts]
+traderos = "traderos.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+traderos = ["py.typed", "capabilities/capabilities.json", "fundamentals/filers.json",
+            "fundamentals/share_classes.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q -p no:cacheprovider"
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+extend-exclude = ["tank", "handoff"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF"]
+ignore = ["UP047", "RUF022"]       # PEP 695 generics and sorted __all__: readability over churn
+
+[tool.ruff.lint.per-file-ignores]
+"src/traderos/contracts/__init__.py" = ["F401"]
+"tests/**" = ["SIM905"]
+# The SEC tools, ported from MIT-licensed upstream code (see NOTICE), keep its printf-style formatting: no rewrite for style (ADR-011, owner rule 11-19)
+"src/traderos/fundamentals/{facts,edgar13f,screen}.py" = ["UP031", "UP032", "RUF001", "RUF005"]
+# The ported risk modules keep the upstream printf-style messages (ADR-009: no rewrite for style); weights.py is carried
+# unchanged from the upstream file (S21, not wired), so its style findings are upstream's too.
+# The ported Yahoo and Stooq fetch keeps the upstream printf-style URLs and messages (ADR-014)
+"src/traderos/adapters/prices.py" = ["UP031"]
+"src/traderos/risk/check.py" = ["UP031", "UP032"]
+"src/traderos/risk/size.py" = ["UP031", "UP032"]
+"src/traderos/risk/tickets.py" = ["UP031", "UP032"]
+"src/traderos/risk/weights.py" = ["UP031", "UP032", "RUF046", "E501", "B904"]
+# The ported files keep the upstream percent formatting, o/h/l/c names and branch shapes: style is not a flaw
+# (owner, 11-19: code is rewritten only for a clear flaw or a clearly better method). ADR-010.
+"src/traderos/timemachine/plan.py" = ["UP031", "E741", "SIM114", "RUF005", "RUF046"]
+"src/traderos/timemachine/orb_study.py" = ["UP031"]
+"tests/unit/test_timemachine_plan.py" = ["UP031", "RUF015"]

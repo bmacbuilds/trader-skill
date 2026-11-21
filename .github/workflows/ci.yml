@@ -1,0 +1,41 @@
+# Pull-request verification (spec 17.1, 03.6). GitHub-hosted runners only; no secrets; least-privilege token;
+# actions pinned by commit. Ubuntu is pinned too: ubuntu-latest moves without notice.
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4.2.2
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b  # v5.3.0
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install (dev)
+        run: python -m pip install ".[dev]" "ruff==0.16.9"
+      - name: Lint
+        run: ruff check src tests tools
+      - name: Tests
+        run: python -m pytest
+      - name: The wheel installs and runs outside the checkout
+        run: |
+          python -m pip wheel --no-deps -w dist .
+          python -m venv "$RUNNER_TEMP/clean"
+          "$RUNNER_TEMP/clean/bin/pip" install dist/*.whl
+          cd "$RUNNER_TEMP"
+          "$RUNNER_TEMP/clean/bin/traderos" --version
+          "$RUNNER_TEMP/clean/bin/traderos" help
