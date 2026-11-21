@@ -15,7 +15,7 @@ from traderos.clock import XNYS
 from traderos.contracts import CONTRACTS_VERSION, ErrorCode, TraderOSError
 from traderos.store import SCHEMA_VERSION, Store
 
-MIN_PYTHON = (3, 12)
+MIN_PYTHON = (3, 11)
 # The typed code `doctor` refuses with, by the first check that failed (exit 3, docs/cli-contract-v1.md).
 DOCTOR_CODES = {"python": ErrorCode.OUTSIDE_CAPABILITY, "sqlite": ErrorCode.OUTSIDE_CAPABILITY,
                 "store": ErrorCode.MISSING_DATA, "calendar": ErrorCode.CALENDAR_UNKNOWN,

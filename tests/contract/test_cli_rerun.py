@@ -88,3 +88,24 @@ def test_a_rerun_still_refuses_a_tampered_version(drafted, capsys):
     _rewrite(home, StrategyVersion.SCHEMA, to_json(forged), record_hash(forged))
     code, out = run(capsys, *approve)
     assert code == 3 and out["failure"]["code"] == "INTEGRITY_MISMATCH" and "do not match" in out["failure"]["message"]
+
+
+# ---- approved in chat (the Claude app) -----------------------------------------------------------------------------
+
+def test_approve_in_chat_records_the_persons_typed_approval(drafted, tmp_path, capsys):
+    _, path, _, v = drafted
+    assert v.approved_by.method == "cli_confirm" and "in chat" not in v.approved_by.statement   # the terminal's
+    home = str(tmp_path / "chat")
+    code, out = run(capsys, "--home", home, "strategy", "draft", path)
+    assert code == 0, out
+    d = out["result"]
+    for wrong in (("--confirm", "yes"), ("--confirm", d["semantic_hash"][:11]), ()):            # only the exact hash
+        code, out = run(capsys, "--home", home, "strategy", "approve", d["draft_id"], *wrong, "--in-chat")
+        assert code == 3 and out["failure"]["code"] == "INVALID_APPROVAL", wrong
+    assert Store(home).all(StrategyVersion) == []
+    code, out = run(capsys, "--home", home, "strategy", "approve", d["draft_id"], "--confirm",
+                    d["semantic_hash"][:12], "--in-chat")
+    assert code == 0, out
+    by = out["result"]["approved_by"]
+    assert by["method"] == "skill_confirm"
+    assert by["statement"] == f"approve {d['name']} rules {d['semantic_hash'][:12]}, typed by the person in chat"

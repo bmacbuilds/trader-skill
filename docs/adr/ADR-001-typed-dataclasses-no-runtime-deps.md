@@ -11,7 +11,7 @@
   hypothesis (MPL-2.0, development only), recorded in `legal/dependency-ledger.csv`.
 
 ## Why
-- **Install:** `pip install` of the wheel works offline once the wheel is local, on any CPython 3.12 or newer. No
+- **Install:** `pip install` of the wheel works offline once the wheel is local, on any CPython 3.11 or newer (3.12 until 2026-11-21: OSDev1 lowered it for the Claude app, #35). No
   compiled dependency can fail on a customer's machine before the demo runs.
 - **Licensing:** the shipped core has nothing to clear but its own code and the upstream MIT notices.
 - **Exact numbers:** Decimal and timestamp rules are ours to freeze (ADR-002). A library's coercion defaults, such as

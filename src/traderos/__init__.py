@@ -4,4 +4,4 @@ Research and hypothetical planning only. Nothing in this package can place an or
 The shared contracts every part builds against live in `traderos.contracts` (docs/contracts-v1.md).
 """
 
-__version__ = "0.1.1"
+__version__ = "2.0.0"

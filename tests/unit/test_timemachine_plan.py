@@ -22,6 +22,7 @@ import inspect
 import io
 import json
 import random
+import statistics
 import unittest
 from contextlib import redirect_stderr, redirect_stdout
 from datetime import UTC, date, datetime, time, timedelta
@@ -1048,7 +1049,7 @@ def test_the_edge_is_each_trade_against_its_own_blind_entries():
             ct = tm.one_trade(D, t["bar"], p, s, round(p + (p - s), 2), 76, True, "next_open", 2.0)
             if not isinstance(ct, str):
                 mine.append(ct["R"])
-        edges.append(t["R"] - sum(mine) / len(mine))
+        edges.append(t["R"] - statistics.mean(mine))      # as the product averages them: exact on every Python
     lo, hi, _ = stationary_bootstrap_mean(edges, seed=20, resamples=tm.BASELINE_DRAWS)
     assert b["edge_ci"] == [lo, hi]
     assert b["edge_R"] == pytest.approx(sum(edges) / len(edges), abs=1e-12)

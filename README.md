@@ -1,14 +1,23 @@
 # /trader: trading superpowers for Claude
 
-Paste this one line into Claude Code and press Enter:
+Built by [Brian MacDonald](https://github.com/bmacbuilds).
+
+Two ways to get it. Pick the one that matches where you use Claude.
+
+**In the Claude app (phone, web or desktop):**
+1. Download [trader-claude-app.zip](https://github.com/traderskill/claude/releases/latest/download/trader-claude-app.zip).
+2. In Claude, open **Customize > Skills**, tap **+**, then **Create skill > Upload a skill**, and pick the file. Code execution must be on in your settings.
+3. In any chat, type **`/trader`**.
+
+**In Claude Code on a Mac or Linux computer (the full version, with saved history):** paste this one line and press Enter:
 
 ```
 ! curl -fsSL https://raw.githubusercontent.com/traderskill/claude/main/install.sh | bash
 ```
 
-Then type **`/trader`**. That's it: pick what you want to do and go.
+Then type **`/trader`**. That's it: pick what you want to do and go. Nothing else needed: no Python, no Git, no account, no API key.
 
-Needs Claude Code (the Code tab in the Claude desktop app, or `claude` in a terminal) on a Mac or Linux. Nothing else: no Python, no Git, no account, no API key.
+In the Claude app, results last for that chat, and downloading prices needs network access turned on for code execution in your settings; otherwise use web research, your own CSV file or the practice data.
 
 Using ChatGPT instead? Paste [github.com/traderskill/chatgpt](https://github.com/traderskill/chatgpt) into a ChatGPT chat.
 
@@ -32,7 +41,7 @@ Free and open source. It runs on your computer, with no account, no sign-up and 
 
 The line above runs [install.sh](install.sh), a short script you can read first. It:
 - installs uv (Astral's official installer) into `~/.local/bin`, only if you do not have it; uv sets up Python 3.12;
-- downloads this repository to `~/.traderos-app` and installs the `traderos` command into `~/.local/bin`;
+- downloads the current release (v2.0.0) of this repository to `~/.traderos-app` and installs the `traderos` command into `~/.local/bin`;
 - copies the skill to `~/.claude/skills/trader`, so `/trader` works in every Claude Code session.
 
 It needs no admin password and changes nothing else. Run it again to update. If `traderos` is not found later, add `export PATH="$HOME/.local/bin:$PATH"` to your `~/.zshrc`.

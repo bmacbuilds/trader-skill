@@ -37,6 +37,9 @@ def register(sub) -> None:
     x = ss.add_parser("approve", help="approve a draft as an immutable strategy version")
     x.add_argument("draft_id")
     x.add_argument("--confirm", help="the first 12 characters of the rules hash you were shown")
+    x.add_argument("--in-chat", action="store_true",
+                   help="the person typed \"approve <hash>\" in the chat themselves (the Claude app): recorded as "
+                        "approved in chat")
     x.set_defaults(run=strategy_approve)
     x = ss.add_parser("show", help="show a draft or version")
     x.add_argument("id")
@@ -174,9 +177,13 @@ def strategy_approve(args) -> Output:
     previous = None
     if d.parent_version_id:
         previous = store.get(StrategyVersion, d.parent_version_id)
-    v, again = _replay(store, rulebook.approve(
-        d, OwnerAction(actor="local", method="cli_confirm", at=datetime.now(UTC),
-                       statement=f"approve {d.name} rules {shown}"), previous=previous))
+    # In the Claude app there is no terminal: the person types "approve <hash>" in the chat, and the record says so.
+    action = (OwnerAction(actor="local", method="skill_confirm", at=datetime.now(UTC),
+                          statement=f"approve {d.name} rules {shown}, typed by the person in chat")
+              if args.in_chat else
+              OwnerAction(actor="local", method="cli_confirm", at=datetime.now(UTC),
+                          statement=f"approve {d.name} rules {shown}"))
+    v, again = _replay(store, rulebook.approve(d, action, previous=previous))
     done = (f"Already approved: {v.version_id} (revision {v.revision}) was approved on "
             f"{v.approved_by.at:%Y-%m-%d %H:%M} UTC; that approval stands." if again
             else f"Approved {v.version_id} (revision {v.revision}).")
