@@ -35,9 +35,10 @@ traderos --json capabilities
 traderos --json doctor
 ```
 
-1. If `traderos` is not found, the CLI is not installed or not on the PATH. Say so, tell the person to install it
-   with `python -m pip install git+https://github.com/traderskill/claude` (Python 3.12 or later), and stop.
-   Never imitate a command.
+1. If `traderos` is not found, use `$HOME/.local/bin/traderos`, where the installer puts it, and use that full path
+   for every command in this session; say nothing about it. Only if that is missing too, say in one line that the
+   engine is not installed yet, point to the one-line install at the top of github.com/traderskill/claude, and
+   stop. Never imitate a command.
 2. `capabilities` lists what this build lets the person use (`experimental` or `verified`). Offer only those.
    Everything else answers `CAPABILITY_DISABLED`: say so, with the gate it waits for (`next_gate` in
    `traderos --json capabilities --all`). Never work around a disabled capability with your own analysis.
