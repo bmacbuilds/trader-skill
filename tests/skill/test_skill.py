@@ -230,7 +230,7 @@ def test_the_project_skill_and_the_plugin_copy_are_byte_identical():
 def test_the_plugin_manifest_parses_and_names_the_skill():
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
     assert manifest["name"] == "traderos" and re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", manifest["name"])
-    assert manifest["version"] == "0.1.0"
+    assert manifest["version"] == "0.1.1"
     assert "/traderos:trader" in manifest["description"]
     # No public repository, homepage or license yet, and no upstream author: those fields stay out.
     assert not {"author", "homepage", "repository", "license"} & set(manifest)

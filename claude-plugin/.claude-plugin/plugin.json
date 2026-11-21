@@ -1,7 +1,7 @@
 {
   "name": "traderos",
   "description": "TraderOS for Claude Code: the /traderos:trader skill runs the traderos CLI on this computer for trading research and hypothetical planning, with paper tickets and paper orders only, never live. Not investment advice.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "keywords": [
     "claude-code",
     "claude-skills",

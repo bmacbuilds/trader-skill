@@ -16,6 +16,6 @@ curl -LsSf https://github.com/traderskill/claude/archive/refs/heads/main.tar.gz 
 rm -rf "$HOME/.claude/skills/trader"
 cp -R "$APP/src/.claude/skills/trader" "$HOME/.claude/skills/trader"
 test -f "$HOME/.claude/skills/trader/SKILL.md"
-"$HOME/.local/bin/traderos" init
-"$HOME/.local/bin/traderos" doctor
-echo "TRADER_INSTALLED"
+"$HOME/.local/bin/traderos" init >/dev/null
+"$HOME/.local/bin/traderos" doctor >/dev/null || { echo "/trader installed, but its self-check failed: run traderos doctor"; exit 1; }
+echo "Done: /trader is installed. Type /trader to start."
