@@ -39,7 +39,7 @@ Free and open source. It runs on your computer, with no account, no sign-up and 
 
 The line above runs [install.sh](install.sh), a short script you can read first. It:
 - installs uv (Astral's official installer) into `~/.local/bin`, only if you do not have it; uv sets up Python 3.12;
-- downloads the current release (v2.0.0) of this repository to `~/.traderos-app` and installs the `traderos` command into `~/.local/bin`;
+- downloads the current release (v2.0.1) of this repository to `~/.traderos-app` and installs the `traderos` command into `~/.local/bin`;
 - copies the skill to `~/.claude/skills/trader`, so `/trader` works in every Claude Code session.
 
 It needs no admin password and changes nothing else. Run it again to update. If `traderos` is not found later, add `export PATH="$HOME/.local/bin:$PATH"` to your `~/.zshrc`.
