@@ -67,7 +67,7 @@ PLANNED_PART_B: dict[str, set[str]] = {}       # #13 is on main: every part-B ve
 # Not in this release (OSDev1's cut ruling): the page says so and offers nothing, so it has no command line.
 NOT_IN_THIS_RELEASE = {"bundles.md"}
 # The one web address the skill may name: the public repository the install step names.
-OWN_REPO = r"github\.com/traderskill/claude(?![\w./-])"
+OWN_REPO = r"github\.com/bmacbuilds/trader-skill(?![\w./-])"
 WEB_TLDS = r"(?:com|org|net|io|gov|edu|markets|ai|app|dev|co|us|uk|info|biz|me)"
 
 FORBIDDEN = {
@@ -244,13 +244,13 @@ def test_the_plugin_manifest_parses_and_names_the_skill():
 
 
 def test_the_marketplace_lists_the_plugin_so_github_installs_it():
-    """`/plugin marketplace add traderskill/claude` reads .claude-plugin/marketplace.json at the repository root."""
+    """`/plugin marketplace add bmacbuilds/trader-skill` reads .claude-plugin/marketplace.json at the root."""
     market = json.loads((ROOT / ".claude-plugin" / "marketplace.json").read_text(encoding="utf-8"))
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
     (entry,) = market["plugins"]
     assert entry["name"] == manifest["name"] == market["name"] == "traderos"
     assert (ROOT / entry["source"] / ".claude-plugin" / "plugin.json").resolve() == MANIFEST.resolve()
-    assert entry["homepage"] == "https://github.com/traderskill/claude" and market["owner"]["name"]
+    assert entry["homepage"] == "https://github.com/bmacbuilds/trader-skill" and market["owner"]["name"]
     assert entry["description"] == manifest["description"]           # one description, never a second pitch
     text = json.dumps(market).lower()
     kept_out = "own" + "box"                       # built at run time, so this file never carries the name itself

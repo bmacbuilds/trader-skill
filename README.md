@@ -1,5 +1,7 @@
 # /trader: trading superpowers for Claude
 
+Built by [Brian MacDonald](https://github.com/bmacbuilds).
+
 Two ways to get it. Pick the one that matches where you use Claude.
 
 **In the Claude app (phone, web or desktop):**
@@ -67,5 +69,3 @@ traderos demo
 ## License
 
 MIT. See [LICENSE](LICENSE).
-
-Built by [Brian MacDonald](https://github.com/bmacbuilds).
