@@ -11,7 +11,7 @@
       "description": "TraderOS for Claude Code: the /traderos:trader skill runs the traderos CLI on this computer for trading research and hypothetical planning, with paper tickets and paper orders only, never live. Not investment advice.",
       "source": "./claude-plugin",
       "category": "productivity",
-      "homepage": "https://github.com/traderskill/claude"
+      "homepage": "https://github.com/bmacbuilds/trader-skill"
     }
   ]
 }

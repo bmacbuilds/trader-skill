@@ -3,21 +3,21 @@
 Two ways to get it. Pick the one that matches where you use Claude.
 
 **In the Claude app (phone, web or desktop):**
-1. Download [trader-claude-app.zip](https://github.com/traderskill/claude/releases/latest/download/trader-claude-app.zip).
+1. Download [trader-claude-app.zip](https://github.com/bmacbuilds/trader-skill/releases/latest/download/trader-claude-app.zip).
 2. In Claude, open **Customize > Skills**, tap **+**, then **Create skill > Upload a skill**, and pick the file. Code execution must be on in your settings.
 3. In any chat, type **`/trader`**.
 
 **In Claude Code on a Mac or Linux computer (the full version, with saved history):** paste this one line and press Enter:
 
 ```
-! curl -fsSL https://raw.githubusercontent.com/traderskill/claude/main/install.sh | bash
+! curl -fsSL https://raw.githubusercontent.com/bmacbuilds/trader-skill/main/install.sh | bash
 ```
 
 Then type **`/trader`**. That's it: pick what you want to do and go. Nothing else needed: no Python, no Git, no account, no API key.
 
 In the Claude app, results last for that chat, and downloading prices needs network access turned on for code execution in your settings; otherwise use web research, your own CSV file or the practice data.
 
-Using ChatGPT instead? Paste [github.com/traderskill/chatgpt](https://github.com/traderskill/chatgpt) into a ChatGPT chat.
+Using ChatGPT instead? Paste [github.com/bmacbuilds/trader-skill/tree/main/chatgpt](https://github.com/bmacbuilds/trader-skill/tree/main/chatgpt) into a ChatGPT chat.
 
 ## What /trader gives Claude
 
@@ -57,7 +57,7 @@ It needs no admin password and changes nothing else. Run it again to update. If 
 Under the hood, /trader runs a local engine called TraderOS (`traderos`, Python 3.12 or newer, no runtime dependencies; the install above gets Python 3.12 through uv). The skill lives in `.claude/skills/trader`. Run `traderos help` for every command, and `traderos capabilities` for what this build enables.
 
 ```sh
-pip install git+https://github.com/traderskill/claude
+pip install git+https://github.com/bmacbuilds/trader-skill
 traderos init
 traderos demo
 ```

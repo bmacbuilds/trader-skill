@@ -11,7 +11,7 @@ if [ -z "$UV" ]; then
   UV="$HOME/.local/bin/uv"
 fi
 rm -rf "$APP/src" && mkdir -p "$APP/src"
-curl -LsSf https://github.com/traderskill/claude/archive/refs/tags/v2.0.0.tar.gz | tar -xz -C "$APP/src" --strip-components 1
+curl -LsSf https://github.com/bmacbuilds/trader-skill/archive/refs/tags/v2.0.0.tar.gz | tar -xz -C "$APP/src" --strip-components 1
 "$UV" tool install --quiet --force --python 3.12 "$APP/src"
 rm -rf "$HOME/.claude/skills/trader"
 cp -R "$APP/src/.claude/skills/trader" "$HOME/.claude/skills/trader"
