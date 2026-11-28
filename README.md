@@ -2,6 +2,22 @@
 
 Built by [Brian MacDonald](https://github.com/bmacbuilds).
 
+## Use it right here
+
+Paste this link into Claude or ChatGPT, then pick one, or say what you want in your own words:
+
+1. **Explore a market.**
+2. **Build or challenge a strategy.**
+3. **Analyze my CSV.**
+
+Trader's instructions for a chat are one plain text file, if you want to read them first:
+https://raw.githubusercontent.com/bmacbuilds/trader-skill/main/chatgpt/README.md
+
+In a chat, it works with that chat's own tools: research with dated sources, strategy designs, and your own CSV file.
+It never places a trade. To test on real prices, get it below. In Claude Code it also keeps every result.
+
+## Install it
+
 Two ways to get it. Pick the one that matches where you use Claude.
 
 **In the Claude app (phone, web or desktop):**
@@ -9,7 +25,7 @@ Two ways to get it. Pick the one that matches where you use Claude.
 2. In Claude, open **Customize > Skills**, tap **+**, then **Create skill > Upload a skill**, and pick the file. Code execution must be on in your settings.
 3. In any chat, type **`/trader`**.
 
-**In Claude Code on a Mac or Linux computer (the full version, with saved history):** paste this one line and press Enter:
+**In Claude Code on a Mac or Linux computer (keeps every result):** paste this one line and press Enter:
 
 ```
 ! curl -fsSL https://raw.githubusercontent.com/bmacbuilds/trader-skill/main/install.sh | bash
@@ -41,10 +57,10 @@ Free and open source. It runs on your computer, with no account, no sign-up and 
 
 The line above runs [install.sh](install.sh), a short script you can read first. It:
 - installs uv (Astral's official installer) into `~/.local/bin`, only if you do not have it; uv sets up Python 3.12;
-- downloads the current release (v2.0.1) of this repository to `~/.traderos-app` and installs the `traderos` command into `~/.local/bin`;
-- copies the skill to `~/.claude/skills/trader`, so `/trader` works in every Claude Code session.
+- downloads the current release (v2.0.1) of this repository to `~/.traderos-app` and installs the `traderos` command into uv's tool folder (normally `~/.local/bin`);
+- copies the skill to `~/.claude/skills/trader`, so `/trader` works in every Claude Code session. If a different skill called trader is already there, it is kept, unchanged, in `~/.traderos-app`, and the installer says where.
 
-It needs no admin password and changes nothing else. Run it again to update. If `traderos` is not found later, add `export PATH="$HOME/.local/bin:$PATH"` to your `~/.zshrc`.
+It needs no admin password and changes nothing else. Run it again to update. If `traderos` is not found later, add the folder `uv tool dir --bin` prints (normally `~/.local/bin`) to your PATH, for example `export PATH="$HOME/.local/bin:$PATH"` in your `~/.zshrc`.
 
 ---
 
@@ -56,7 +72,7 @@ It needs no admin password and changes nothing else. Run it again to update. If 
 
 ## For developers
 
-Under the hood, /trader runs a local engine called TraderOS (`traderos`, Python 3.12 or newer, no runtime dependencies; the install above gets Python 3.12 through uv). The skill lives in `.claude/skills/trader`. Run `traderos help` for every command, and `traderos capabilities` for what this build enables.
+Under the hood, /trader runs a local engine called TraderOS (`traderos`, Python 3.11 or newer, no runtime dependencies; the install above gets Python 3.12 through uv). The skill lives in `.claude/skills/trader`. Run `traderos help` for every command, and `traderos capabilities` for what this build enables.
 
 ```sh
 pip install git+https://github.com/bmacbuilds/trader-skill

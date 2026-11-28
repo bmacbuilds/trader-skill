@@ -1,17 +1,15 @@
 ---
 name: trader
 description: >-
-  TraderOS: trading research and hypothetical planning through the `traderos`
-  command on this computer. Imports the person's own CSV bars, drafts typed
-  strategies they approve, runs cost-aware backtests with falsification
-  challenges, builds and explains Evidence Passports, searches research
-  memory, replays a planned day trade in the Time Machine, sizes and
-  risk-checks hypothetical plans, keeps paper tickets and a journal, and reads
-  SEC earnings, 13F holdings and fundamental screens. Paper orders only, never
-  live. Not investment advice. Use when the
-  user types /trader, asks to research or backtest a trading idea, explain a
-  result or a Passport, size or risk-check a trade, read earnings or a 13F,
-  screen stocks, or replay a trade plan.
+  TraderOS: test a trading idea on real prices after trading costs, fact-check
+  a tip or a tweet with dated sources, see what is moving a stock or the
+  market, read earnings, 13F holdings and fundamental screens from the SEC,
+  and size and risk-check a trade before placing anything. It runs the
+  `traderos` command on this computer and keeps every result. Paper orders
+  only, never live. Not investment advice. Use when the user types /trader,
+  asks what is moving a stock, wants to test or backtest a trading idea,
+  fact-check a claim, read earnings or a 13F, screen stocks, size or
+  risk-check a trade, replay a trade plan, or explain a result or a Passport.
 argument-hint: "[help | what you want to research]"
 ---
 

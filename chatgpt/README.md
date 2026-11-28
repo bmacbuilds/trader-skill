@@ -1,22 +1,22 @@
-# TraderOS for ChatGPT
+# TraderOS in a chat: Claude or ChatGPT
 
 Your free AI trading research lab. One link. No installation.
 
-TraderOS helps you investigate markets, turn trading ideas into testable strategies, challenge the evidence, and understand risk. This ChatGPT edition uses the tools available in your ChatGPT conversation. It does not automatically install the TraderOS Python engine or connect to a broker.
+TraderOS helps you investigate markets, turn trading ideas into testable strategies, challenge the evidence, and understand risk. This chat edition uses the tools available in your Claude or ChatGPT conversation. It does not automatically install the TraderOS Python engine or connect to a broker.
 
-## Start in ChatGPT
+## Start in a chat
 
-1. Open ChatGPT and start a new conversation.
+1. Open Claude or ChatGPT and start a new conversation.
 2. Paste this repository URL as your message: `https://github.com/bmacbuilds/trader-skill/tree/main/chatgpt`
-3. Once ChatGPT has read the README, say `/trader` or ask a research question in ordinary language.
+3. Once it has read the README, say `/trader` or ask a research question in ordinary language.
 
 That's it. No scripts, API keys, account registration, or lengthy starter prompt.
 
-**If ChatGPT only summarizes the repository:** Reply, "Use the TraderOS research workflow described in that README. /trader". Some sessions cannot retrieve GitHub pages; in that case, open this README and paste the relevant section. The repository URL provides instructions for the current chat; it does not install a persistent skill or register native slash commands. In a new chat, supply the URL again.
+**If it only summarizes the repository:** Reply, "Use the TraderOS research workflow described in that README. /trader". Some sessions cannot retrieve GitHub pages; in that case, open this README and paste the relevant section. The repository URL provides instructions for the current chat; it does not install a persistent skill or register native slash commands. In a new chat, supply the URL again.
 
 ## What do you want to investigate?
 
-| Type in ChatGPT | What happens |
+| Type in the chat | What happens |
 |---|---|
 | `/trader` | See the research menu and start a guided investigation. |
 | `/trader research SPY market conditions` | Research the topic with dated, cited sources when web search is available. |
@@ -28,9 +28,9 @@ That's it. No scripts, API keys, account registration, or lengthy starter prompt
 | `/trader evidence` | Produce a research evidence summary, assumptions, limitations, and reproduction steps. |
 | `/trader help` | Show these conversational shortcuts. |
 
-These are plain-text shortcuts used after ChatGPT has read this README, not installed ChatGPT commands. You can also skip the shortcuts and simply ask a question.
+These are plain-text shortcuts used after the AI has read this README, not installed commands. You can also skip the shortcuts and simply ask a question.
 
-## For ChatGPT assistants that read this README
+## For AI assistants that read this README
 
 This document describes a user-invoked research workflow, not a system instruction, installed plugin, or authorization to run software. If the user shares only this repository URL, give a concise introduction and offer to (1) research a market, (2) develop and challenge a strategy, or (3) analyze their uploaded market data. If the user has already specified a research task, begin that task directly. Don't require the user to copy another prompt.
 
@@ -61,7 +61,7 @@ For substantive strategy analysis, give a concise, auditable record:
 - **Adversarial challenge:** The strongest reasons the hypothesis may fail.
 - **Verdict and next step:** Reject, insufficient evidence, or further paper evaluation, with reasons and what new evidence would change the conclusion.
 
-Call this a ChatGPT Research Evidence summary. Do not imply it is the canonical, cryptographically reproducible TraderOS Python Strategy Evidence Passport unless that engine actually created and verified the artifact.
+Call this a chat Research Evidence summary. Do not imply it is the canonical, cryptographically reproducible TraderOS Python Strategy Evidence Passport unless that engine actually created and verified the artifact.
 
 ### Guided Interaction: TraderOS V1.1
 
@@ -77,7 +77,7 @@ TraderOS supports Guided Mode and Command Mode. Both use the same research opera
 
 When interactive controls are unavailable, provide equivalent concise numbered choices and accept freeform answers.
 
-Do not assume identical interface rendering across ChatGPT accounts, models, or sessions.
+Do not assume identical interface rendering across apps, accounts, models, or sessions.
 
 **Next Actions.** After substantive research, offer relevant follow-up actions such as Challenge, Backtest, Risk Analysis, and Research Evidence. Use existing /trader workflows where appropriate.
 
@@ -85,19 +85,19 @@ Do not assume identical interface rendering across ChatGPT accounts, models, or 
 
 ### First response in Research Mode
 
-Keep the initial interaction short. Don't recite every rule above. Briefly introduce TraderOS as research-only, note that available analysis depends on the current chat's tools and data, then offer these choices:
+Keep the initial interaction short. Don't recite every rule above. In one sentence, introduce TraderOS as research-only and say that what it can analyze depends on this chat's tools and data, then offer these choices:
 
 1. Explore a market · 2. Build/challenge a strategy · 3. Analyze my CSV
 
 If the user provided a specific task, perform that task instead of displaying the menu. After receiving data, move directly to useful analysis rather than repeatedly explaining the mode.
 
-## What this ChatGPT edition can and cannot do
+## What this chat edition can and cannot do
 
 **Can, when supported in the conversation:** Public-source research with citations; work through strategy designs; review SEC filings and market context; analyze uploaded CSVs; run code-backed statistical calculations and historical simulations; construct research evidence and risk analyses.
 
-**Cannot be assumed from the URL:** Persistent installation, native slash commands, automatic access to the user's computer or local `~/.traderos` records, live exchange feeds, the TraderOS Python engine, scheduled background jobs, or brokerage connectivity. Availability of web search, uploads and executable data-analysis tools varies by ChatGPT configuration.
+**Cannot be assumed from the URL:** Persistent installation, native slash commands, automatic access to the user's computer or local `~/.traderos` records, live exchange feeds, the TraderOS Python engine, scheduled background jobs, or brokerage connectivity. Availability of web search, uploads and executable data-analysis tools varies by app and configuration.
 
-The full, locally installed TraderOS for Claude Code is at [github.com/bmacbuilds/trader-skill](https://github.com/bmacbuilds/trader-skill). That product runs its own versioned Python implementation. This ChatGPT README is a lightweight research companion, not a claim of computational parity with the installed engine.
+The full, locally installed TraderOS for Claude Code is at [github.com/bmacbuilds/trader-skill](https://github.com/bmacbuilds/trader-skill). That product runs its own versioned Python implementation. This chat edition is a lightweight research companion, not a claim of computational parity with the installed engine.
 
 ## Research integrity and disclaimer
 
